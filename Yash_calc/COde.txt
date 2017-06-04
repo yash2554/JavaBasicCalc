@@ -1,0 +1,296 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/*
+ * Calc.java
+ *
+ * Created on Oct 19, 2013, 11:29:45 AM
+ */
+/**
+ *
+ * @author Yash
+ */
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+ 
+class Calc extends JFrame implements ActionListener { 
+   
+    
+    JButton button1 = new JButton("1");
+    JButton button2 = new JButton("2");
+    JButton button3 = new JButton("3");
+    JButton plus = new JButton("+");
+    
+    JButton button4 = new JButton("4");
+    JButton button5 = new JButton("5");
+    JButton button6 = new JButton("6");
+    JButton minus = new JButton("-");
+    
+    JButton button7 = new JButton("7");
+    JButton button8 = new JButton("8");
+    JButton button9 = new JButton("9");
+    JButton multiply = new JButton("*");
+    
+    JButton button0 = new JButton("0");
+    JButton clear = new JButton("CLR");
+    JButton devide = new JButton("/");
+    JButton equal = new JButton("=");
+
+    TextField txt=new TextField(15);
+    Font font = new Font("Times new Roman", Font.BOLD, 15);
+    
+    String str_number = "";
+    int operation = 0;
+    double int_number1 = 0;
+    double int_number2 = 0;
+    double result = 0;
+    double temp = 0;
+    
+    public Calc() {
+        
+        JFrame frame = new JFrame("Y'Ash  CAlC");
+        frame.setSize(420,520);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setVisible(true);
+        
+        frame.setLayout(new BorderLayout());
+        
+        JPanel HeadPanel = new JPanel();
+        JPanel NumberPanel = new JPanel();
+        JPanel LabelPanel = new JPanel();
+        
+        LabelPanel.setBackground(Color.WHITE);
+        HeadPanel.setBackground(Color.WHITE);
+        
+        NumberPanel.setLayout(new GridLayout(4,5));
+        LabelPanel.setLayout(new FlowLayout());
+        
+        NumberPanel.add(button1);
+        button1.addActionListener(this);
+        NumberPanel.add(button2);
+        button2.addActionListener(this);
+        NumberPanel.add(button3);
+        button3.addActionListener(this);
+        NumberPanel.add(plus);
+        plus.addActionListener(this);
+        
+        NumberPanel.add(button4);
+        button4.addActionListener(this);
+        NumberPanel.add(button5);
+        button5.addActionListener(this);
+        NumberPanel.add(button6);
+        button6.addActionListener(this);
+        NumberPanel.add(minus);
+        minus.addActionListener(this);
+        
+        NumberPanel.add(button7);
+        button7.addActionListener(this);
+        NumberPanel.add(button8);
+        button8.addActionListener(this);
+        NumberPanel.add(button9);
+        button9.addActionListener(this);
+        NumberPanel.add(multiply);
+        multiply.addActionListener(this);
+        
+        NumberPanel.add(button0);
+        button0.addActionListener(this);
+        NumberPanel.add(clear);
+        clear.addActionListener(this);
+       
+        NumberPanel.add(devide);
+        devide.addActionListener(this);
+        
+        LabelPanel.add(new JLabel("ANSWER : "));
+        LabelPanel.add(txt);
+        LabelPanel.add(equal);
+        equal.addActionListener(this);
+        
+        txt.setEditable(false);
+     
+             
+        HeadPanel.add(new JLabel("Y'Ash  CAlc"));
+        frame.add(HeadPanel,BorderLayout.NORTH);
+        frame.add(NumberPanel,BorderLayout.CENTER);
+        frame.add(LabelPanel,BorderLayout.SOUTH);
+        frame.setBackground(Color.BLACK);
+        
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        
+    if(e.getSource()==button1) {
+           txt.setText("1");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button2) {
+           txt.setText("2");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button3) {
+           txt.setText("3");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button4) {
+           txt.setText("4");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button5) {
+           txt.setText("5");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button6) {
+           txt.setText("6");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button7) {
+           txt.setText("7");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button8) {
+           txt.setText("8");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button9) {
+           txt.setText("9");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+    else if(e.getSource()==button0) {
+           txt.setText("0");
+           str_number+=txt.getText();
+           txt.setText(str_number); }
+     else if(e.getSource()==plus) {
+            if(operation==0 & str_number!="") {
+            int_number1=Integer.parseInt(str_number);
+            txt.setText("+");
+            str_number+=txt.getText();
+            txt.setText(str_number);
+            operation=1;
+            }
+            else { txt.setText(str_number); }
+            }
+     else if(e.getSource()==minus) {
+         if(operation==0 & str_number!="") {
+            int_number1=Integer.parseInt(str_number);
+             txt.setText("-");
+             str_number+=txt.getText();
+             txt.setText(str_number);
+             operation=2;
+             }
+             else { txt.setText(str_number); }
+             }
+     else if(e.getSource()==multiply) {
+         if(operation==0 & str_number!="") {
+            int_number1=Integer.parseInt(str_number);
+             txt.setText("*");
+             str_number+=txt.getText();
+             txt.setText(str_number);
+             operation=3;
+             }
+             else { txt.setText(str_number); }
+             }
+     else if(e.getSource()==devide) {
+         if(operation==0 & str_number!="") {
+            int_number1=Integer.parseInt(str_number);
+             txt.setText("/");
+             str_number+=txt.getText();
+             txt.setText(str_number);
+             operation=4;
+             }
+             else { txt.setText(str_number); }
+             }
+     else if(e.getSource()==equal) {
+         if(operation!=0 & str_number!="") {
+             txt.setText("=");
+               str_number+=txt.getText();
+               txt.setText(str_number);
+             switch(operation) {
+             case 1: {
+                    String[] kelime = null;
+                    kelime = str_number.split("\\+");
+                    int_number2=Integer.parseInt(kelime[1].replace("=",""));
+                 result=int_number1+int_number2;
+                 txt.setText(str_number+Double.toString(result));
+                 break;
+             }
+             case 2: {
+                    String[] kelime = null;
+                    kelime = str_number.split("\\-");
+                    int_number2=Integer.parseInt(kelime[1].replace("=",""));
+                 result=int_number1-int_number2;
+                 txt.setText(str_number+Double.toString(result));
+                 break;
+             }
+             case 3: {
+                    String[] kelime = null;
+                    kelime = str_number.split("\\*");
+                    int_number2=Integer.parseInt(kelime[1].replace("=",""));
+                 result=int_number1*int_number2;
+                 txt.setText(str_number+Double.toString(result));
+                 break;
+             }
+             case 4: {
+                    String[] kelime = null;
+                    kelime = str_number.split("\\/");
+                    int_number2=Integer.parseInt(kelime[1].replace("=",""));
+                 result=int_number1/int_number2;
+                 txt.setText(str_number+Double.toString(result));
+                 break;
+             }
+             }
+             button0.setEnabled(false);
+             button1.setEnabled(false);
+             button2.setEnabled(false);
+             button3.setEnabled(false);
+             button4.setEnabled(false);
+             button5.setEnabled(false);
+             button6.setEnabled(false);
+             button7.setEnabled(false);
+             button8.setEnabled(false);
+             button9.setEnabled(false);
+             plus.setEnabled(false);
+             minus.setEnabled(false);
+             multiply.setEnabled(false);
+             devide.setEnabled(false);
+             equal.setEnabled(false);
+             clear.setEnabled(true);
+             
+         }
+         else { txt.setText("ERROR!!!"); }
+     }
+     else if(e.getSource()==clear) {
+         txt.setText("");
+         str_number = "";
+         operation = 0;
+         int_number1 = 0;
+         int_number2 = 0;
+         result = 0;
+         button0.setEnabled(true);
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+        button4.setEnabled(true);
+        button5.setEnabled(true);
+        button6.setEnabled(true);
+        button7.setEnabled(true);
+        button8.setEnabled(true);
+        button9.setEnabled(true);
+        plus.setEnabled(true);
+        minus.setEnabled(true);
+        multiply.setEnabled(true);
+        devide.setEnabled(true);
+        equal.setEnabled(true);
+        clear.setEnabled(false);
+     }
+     
+}
+    
+    public static void main(String[] args) {
+        
+        new Calc();
+        
+    }
+}
